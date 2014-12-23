@@ -1,4 +1,5 @@
 assert = require 'assert'
+async = require 'async'
 webdriver = require 'browserstack-webdriver'
 test = require 'browserstack-webdriver/testing'
 
@@ -127,3 +128,18 @@ test.describe 'browserstack-webdriver module', ->
         # そもそも、mocha の更新に追随する気が無いみたいなので。
         #
         .then => @driver.getTitle()
+
+
+  test.describe 'promiseが進まなかったケース', ->
+
+    test.it '非同期処理後にrejectしたらテスト終了時に止まったことがある', ->
+      d = webdriver.promise.defer()
+      async.series [
+        (next) ->
+          next new Error 'ERROR'
+      ], (e) ->
+        # ここで止まったことがあった、これだと動くなぁ..
+        # エラーになると邪魔だから非エラーにしとく
+        #return d.reject e if e
+        d.fulfill()
+      d.promise

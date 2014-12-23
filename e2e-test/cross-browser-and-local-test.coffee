@@ -16,13 +16,13 @@ defaultCapabilities =
 # 各値は https://www.browserstack.com/automate/node#setting-os-and-browser で生成できる
 browsers = [
   { os: 'Windows', os_version:'8.1', browser: 'IE', browser_version: '11.0' }
-  { os: 'Windows', os_version:'8', browser: 'IE', browser_version: '10.0' }
-  { os: 'Windows', os_version:'7', browser: 'IE', browser_version: '9.0' }
+  #{ os: 'Windows', os_version:'8', browser: 'IE', browser_version: '10.0' }
+  #{ os: 'Windows', os_version:'7', browser: 'IE', browser_version: '9.0' }
   { os: 'Windows', os_version:'7', browser: 'IE', browser_version: '8.0' }
   { os: 'OS X', os_version:'Yosemite', browser: 'Safari', browser_version: '8.0' }
   { os: 'OS X', os_version:'Yosemite', browser: 'Firefox', browser_version: '8.0' }
   { os: 'OS X', os_version:'Mavericks', browser: 'Chrome', browser_version: '38.0' }
-  # たまに 10 秒以上掛かることがあるのでここでは外す
+  # たまに 10 秒以上掛かる
   #{ browserName: 'iPhone', platform: 'MAC', device: 'iPhone 5' }
   #{ browserName: 'android', platform: 'ANDROID', device: 'Samsung Galaxy S5' }
 ]
@@ -59,3 +59,35 @@ test.describe 'cross-browser test sample', ->
         @driver.get 'http://example.com'
           .then => @driver.getTitle()
           .then (title) -> assert.strictEqual 'Example Domain', title
+
+
+test.describe 'local test sample', ->
+
+  for browserData in browsers then do (browserData) ->
+
+    #
+    # ローカルネットワークに対してテストを行うには、以下の設定が必要
+    #
+    # 1.事前に BrowserStackLocal プロセスの起動
+    #   本プロジェクトでは、scripts/start-BrowserStackLocal.sh に設置
+    # 2.'browserstack.local': 'true' を capabilities へ設定する
+    #
+    capabilities = _.extend {
+      'browserstack.local': 'true'
+    }, defaultCapabilities, browserData
+
+    test.describe titleizeCapabilities(capabilities), ->
+
+      test.before ->
+        @driver = new webdriver.Builder()
+          .usingServer 'http://hub.browserstack.com/wd/hub'
+          .withCapabilities capabilities
+          .build()
+
+      test.after ->
+        @driver.quit()
+
+      test.it 'トップページを検証する', ->
+        @driver.get 'http://localhost:3000'
+          .then => @driver.getTitle()
+          .then (title) -> assert.strictEqual 'Express', title
