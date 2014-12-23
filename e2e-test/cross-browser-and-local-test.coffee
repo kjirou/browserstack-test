@@ -20,7 +20,7 @@ browsers = [
   #{ os: 'Windows', os_version:'7', browser: 'IE', browser_version: '9.0' }
   { os: 'Windows', os_version:'7', browser: 'IE', browser_version: '8.0' }
   { os: 'OS X', os_version:'Yosemite', browser: 'Safari', browser_version: '8.0' }
-  { os: 'OS X', os_version:'Yosemite', browser: 'Firefox', browser_version: '8.0' }
+  { os: 'OS X', os_version:'Mavericks', browser: 'Firefox', browser_version: '33.0' }
   { os: 'OS X', os_version:'Mavericks', browser: 'Chrome', browser_version: '38.0' }
   # たまに 10 秒以上掛かる
   #{ browserName: 'iPhone', platform: 'MAC', device: 'iPhone 5' }
