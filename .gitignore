@@ -38,4 +38,3 @@ testem.*.*.*.json
 
 bin/BrowserStackLocal
 bin/selenium-server-standalone-*.jar
-browserstack-conf.json
