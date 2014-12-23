@@ -1,0 +1,37 @@
+{
+  "name": "browserstack-test",
+  "description": "browserstack-test =================",
+  "version": "0.0.0",
+  "author": "kjirou",
+  "bugs": {
+    "url": "https://github.com/kjirou/browserstack-test/issues"
+  },
+  "dependencies": {
+    "body-parser": "1.8.1",
+    "coffee-script": "1.8.0",
+    "cookie-parser": "1.3.3",
+    "debug": "2.0.0",
+    "express": "4.9.0",
+    "jade": "1.6.0",
+    "morgan": "1.3.0",
+    "serve-favicon": "2.1.3"
+  },
+  "devDependencies": {
+    "browserstack-webdriver": "2.41.1",
+    "fixpack": "1.2.0",
+    "mocha": "2.0.1"
+  },
+  "homepage": "https://github.com/kjirou/browserstack-test",
+  "license": "http://kjirou.mit-license.org/",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kjirou/browserstack-test.git"
+  },
+  "scripts": {
+    "e2e-test": "mocha e2e-test/*.coffee",
+    "start": "node ./bin/www",
+    "test": "mocha"
+  }
+}

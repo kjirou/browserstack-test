@@ -1,0 +1,25 @@
+machine:
+  node:
+    version: 0.10.33
+  environment:
+    NODE_ENV: development
+    # e2e-test 実行に必要、set-browserstack-environments.sh 内の値と要同期
+    SELENIUM: $HOME/$CIRCLE_PROJECT_REPONAME/bin/selenium-server-standalone-2.44.0.jar
+
+dependencies:
+  pre:
+    - >
+      if [ "${SHOULD_RUN_E2E_TEST}" = 'true' ]; then
+        sh ./scripts/browserstack-environments.sh
+        ./bin/BrowserStackLocal BN76p5BLfpURYa7mCaWu localhost,3000,0 > /dev/null &
+      fi
+
+test:
+  override:
+    - if [ "${SHOULD_NOT_RUN_DEFAULT_TEST}" != 'true' ]; then npm test; fi
+    - >
+      if [ "${SHOULD_RUN_E2E_TEST}" = 'true' ]; then
+        npm start > /dev/null &
+        sleep 5
+        npm run e2e-test
+      fi
