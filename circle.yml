@@ -1,3 +1,12 @@
+#
+# $SHOULD_NOT_RUN_DEFAULT_TEST や $SHOULD_RUN_E2E_TEST の初期値は未定義、
+# scripts/run-e2e-test-on-circle-ci.sh から実行する際に 'true' が設定される。
+#
+# これらを定義した理由は、
+# BrowserStack のテストが遅すぎるので、全員の push 時に行うことがほぼ無理であるため、
+# npm run e2e-test は自動で行わないようにしたかったから。
+#
+
 machine:
   node:
     version: 0.10.33

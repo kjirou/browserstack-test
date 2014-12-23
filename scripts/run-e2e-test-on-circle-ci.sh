@@ -35,11 +35,15 @@ if [ "$_branch" = '' ]; then
   _branch='master'
 fi
 if [ "$_circle_token" = '' ]; then
-  # Created from https://circleci.com/gh/plaidev/karte-io/edit#api
-  _circle_token='d14416eadd082e566659f7ae504c5f645ba90ad0'
+  # Created by:
+  # 1. https://circleci.com/gh/{GitHub-username}/{GitHub-project}/edit#api
+  #    e.g. https://circleci.com/gh/kjirou/browserstack-test/edit#api
+  # 2. Choice "All" status
+  # 3. Click "Create token"
+  _circle_token='90df5528a08567f02dbe0b76b892be4b10a8c00d'
 fi
 
-trigger_build_url=https://circleci.com/api/v1/project/plaidev/karte-io/tree/${_branch}?circle-token=${_circle_token}
+trigger_build_url=https://circleci.com/api/v1/project/kjirou/browserstack-test/tree/${_branch}?circle-token=${_circle_token}
 echo $trigger_build_url
 
 post_data=$(cat <<EOF
