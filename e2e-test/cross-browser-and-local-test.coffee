@@ -19,6 +19,7 @@ browsers = [
   #{ os: 'Windows', os_version:'8', browser: 'IE', browser_version: '10.0' }
   #{ os: 'Windows', os_version:'7', browser: 'IE', browser_version: '9.0' }
   { os: 'Windows', os_version:'7', browser: 'IE', browser_version: '8.0' }
+  # Yosemite が良く失敗する！
   { os: 'OS X', os_version:'Yosemite', browser: 'Safari', browser_version: '8.0' }
   { os: 'OS X', os_version:'Mavericks', browser: 'Firefox', browser_version: '33.0' }
   { os: 'OS X', os_version:'Mavericks', browser: 'Chrome', browser_version: '38.0' }
