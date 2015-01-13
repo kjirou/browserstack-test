@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Do Ajax
+  div.ajax-result
+
+  script.
+    (function(){
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/text', false);
+      xhr.send();
+      document.querySelector('.ajax-result').innerHTML = xhr.responseText;
+    })();

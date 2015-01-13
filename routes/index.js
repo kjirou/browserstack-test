@@ -6,4 +6,12 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/do-ajax', function(req, res) {
+  res.render('do-ajax');
+});
+
+router.get('/text', function(req, res) {
+  res.send('Ajax-Result');
+});
+
 module.exports = router;
