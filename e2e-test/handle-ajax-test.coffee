@@ -38,3 +38,13 @@ test.describe 'handle ajax test', ->
           console.log source
           assert /GET-Ajax-Result/.test source
           assert /POST-Ajax-Result/.test source
+
+    test.it 'XMLHttpRequestで非同期リクエストした結果がページに表示されている', ->
+      @driver.get 'http://localhost:3000/do-async-ajax'
+        .then =>
+          @driver.sleep 5000
+        .then => @driver.getPageSource()
+        .then (source) =>
+          console.log source
+          assert /GET-Ajax-Result/.test source
+          assert /POST-Ajax-Result/.test source

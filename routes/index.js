@@ -10,6 +10,10 @@ router.get('/do-ajax', function(req, res) {
   res.render('do-ajax');
 });
 
+router.get('/do-async-ajax', function(req, res) {
+  res.render('do-async-ajax');
+});
+
 router.all('/text', function(req, res) {
   res.send('Ajax-Result');
 });

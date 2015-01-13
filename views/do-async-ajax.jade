@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Do Async Ajax
+  div.get-ajax-result
+  div.post-ajax-result
+
+  script.
+    (function(){
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/text', true);
+      xhr.onload = function(){
+        document.querySelector('.get-ajax-result').innerHTML = 'GET-' + xhr.responseText;
+      };
+      xhr.send();
+    })();
+    (function(){
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/text', true);
+      xhr.onload = function(){
+        document.querySelector('.post-ajax-result').innerHTML = 'POST-' + xhr.responseText;
+      };
+      xhr.send();
+    })();
