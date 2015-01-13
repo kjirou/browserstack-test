@@ -2,12 +2,19 @@ extends layout
 
 block content
   h1 Do Ajax
-  div.ajax-result
+  div.get-ajax-result
+  div.post-ajax-result
 
   script.
     (function(){
       var xhr = new XMLHttpRequest();
       xhr.open('GET', '/text', false);
       xhr.send();
-      document.querySelector('.ajax-result').innerHTML = xhr.responseText;
+      document.querySelector('.get-ajax-result').innerHTML = 'GET-' + xhr.responseText;
+    })();
+    (function(){
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/text', false);
+      xhr.send();
+      document.querySelector('.post-ajax-result').innerHTML = 'POST-' + xhr.responseText;
     })();

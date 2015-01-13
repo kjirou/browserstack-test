@@ -10,7 +10,7 @@ router.get('/do-ajax', function(req, res) {
   res.render('do-ajax');
 });
 
-router.get('/text', function(req, res) {
+router.all('/text', function(req, res) {
   res.send('Ajax-Result');
 });
 

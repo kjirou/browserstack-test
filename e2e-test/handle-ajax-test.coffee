@@ -36,4 +36,5 @@ test.describe 'handle ajax test', ->
         .then => @driver.getPageSource()
         .then (source) =>
           console.log source
-          assert /Ajax-Result/.test source
+          assert /GET-Ajax-Result/.test source
+          assert /POST-Ajax-Result/.test source
